@@ -1,0 +1,5 @@
+version: '3'
+services: 
+        debian:
+                build: ./Debian
+                tty: true
