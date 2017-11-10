@@ -1,0 +1,23 @@
+---
+- hosts: all
+  tasks:
+    
+    - name: Check for exist telegraf file
+      shell: ls /tmp
+      register: check_exist
+
+    - name: Download telegraf       
+      get_url: 
+        url: https://dl.influxdata.com/telegraf/releases/telegraf_1.4.3-1_amd64.deb
+        dest: /tmp
+        checksum: sha256:9905e32019ae57f759d2344371cbb42d62823f6a5feb37ee544a729ab1baec45k
+    
+    - name: Installing telegraf
+      apt: 
+        deb: /tmp/telegraf_1.4.3-1_amd64.deb
+
+    - name: Starting telegraf service
+      service:
+        name: telegraf
+        state: started
+    

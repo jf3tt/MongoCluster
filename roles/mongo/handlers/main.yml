@@ -1,0 +1,4 @@
+---
+- name: mongodb start
+  shell: mongod --config /etc/mongodb.conf
+

@@ -1,0 +1,13 @@
+---
+ - name: Install mongodb
+   apt: 
+     name: mongodb
+     update_cache: yes
+
+ - include: roles/mongo/tasks/set_replica.yml
+ - include: roles/mongo/handlers/main.yml
+   notify: 
+     - Mongodb start
+
+
+

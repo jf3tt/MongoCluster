@@ -1,5 +1,37 @@
 version: '3'
 services: 
-        debian:
-                build: ./Debian
-                tty: true
+  
+  alpha:
+    build: ./Debian
+    tty: true
+    container_name: alpha
+    networks: 
+      - db
+
+  bravo:
+    build: ./Debian
+    tty: true
+    container_name: bravo
+    networks: 
+      - db
+
+  charlie:
+    build: ./Debian
+    container_name: charlie
+    tty: true
+    networks: 
+      - db
+
+  delta:
+    build: ./Debian
+    container_name: delta
+    tty: true
+    networks: 
+      - db
+
+networks: 
+  db:
+    ipam:
+      config:
+        - subnet: 10.10.10.0/24
+
